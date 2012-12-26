@@ -5,14 +5,14 @@ Generators as described in PEP 342.
 
 ## Working
  * Platforms:
- ** GLib
- ** Epoll
+ 	* GLib
+ 	* Epoll
 
 ## ToDo: 
  * Platforms:
- ** PySide
- ** PyQT
- ** plain select
+ 	* PySide
+ 	* PyQT
+ 	* plain select (select.select)
  * Something like Tornado's stream class
  * Implement coroutines with Enhanced Generators (PEP 342)
  * Cleaning

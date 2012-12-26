@@ -8,11 +8,12 @@ Generators as described in PEP 342.
  	* GLib
  	* Epoll
 
-## ToDo: 
+## ToDo:
+ * Implement coroutines with Enhanced Generators (PEP 342)
+ * Python 2 Support
+ * Something like Tornado's stream class
  * Platforms:
  	* PySide
  	* PyQT
  	* plain select (select.select)
- * Something like Tornado's stream class
- * Implement coroutines with Enhanced Generators (PEP 342)
  * Cleaning

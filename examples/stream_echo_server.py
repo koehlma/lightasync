@@ -44,8 +44,7 @@ def server():
     server = stream.Stream(connection)
     while True:
         connection, address = yield server.accept()
-        read_write(connection)
-    
+        read_write(connection)    
 
 if __name__ == '__main__':
     server()

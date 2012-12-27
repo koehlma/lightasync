@@ -1,27 +1,32 @@
 # LightAsync
-Lightasync aims to be a fast, lightweight, cross platform and multi gui toolkit
-library for asynchronous IO. It is written in Python and using Enhanced
-Generators as described in PEP 342.
+LightAsync aims to be a **fast**, **lightweight**, **cross platform** and
+**multiple GUI toolkit** library for asynchronous IO written in Python using
+Enhanced Generators as described in
+[PEP 342](http://www.python.org/dev/peps/pep-0342/). 
 
 ## Working
  * Platforms:
  	* GLib
  	* Epoll
+ * Enhanced Generators (PEP 342) - quick and dirty
 
 ## ToDo:
- * Implement coroutines with Enhanced Generators (PEP 342)
  * Python 2 Support
  * Something like Tornado's stream class
+ * Cleanup
  * Platforms:
- 	* PySide
- 	* PyQT
- 	* plain select (select.select)
- * Cleaning
+ 	* Py(Side|QT)?
+ 	* ... 
  
 # Enhanced Generator (PEP 342)
+	def asynchronous():
+		...
+		return Asynchronous()
+	
+	
 	def function_2():
 		return Event | Condition | Timeout | Asynchronous | Callback | ...
-	
+		
 	@asynchronous
 	def function_1():
 		result = yield function_2(*arguments, **key_word_argument)

@@ -16,13 +16,18 @@
 # License along with this library; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-class BackendError(Exception): pass
+import lightasync.callback as callback
+import lightasync.loop as loop
 
-class TimeoutActive(BackendError): pass
-class TimeoutInactive(BackendError): pass
-
-class WatchRegistered(BackendError): pass
-class WatchUnregistered(BackendError): pass
-
-class BackendActive(BackendError): pass
-class BackendInactive(BackendError): pass
+class Timeout(callback.Callback):
+    def __init__(self, delta, loop=loop.loop):
+        self.delta = delta
+        self.loop = loop
+        self.callback = None
+    
+    def activator(self, callback):
+        self.timeout = self.loop.timeout(self.delta, self.emit)
+    
+    def deactivator(self, callback):
+        if self.timeout.active:
+            self.timeout.cancel()

@@ -16,13 +16,20 @@
 # License along with this library; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 
-class BackendError(Exception): pass
-
-class TimeoutActive(BackendError): pass
-class TimeoutInactive(BackendError): pass
-
-class WatchRegistered(BackendError): pass
-class WatchUnregistered(BackendError): pass
-
-class BackendActive(BackendError): pass
-class BackendInactive(BackendError): pass
+class Callback():
+    def __init__(self, activator, deactivator):
+        self.activator = activator
+        self.deactivator = deactivator
+        self.callback = None
+        self.exception = None
+    
+    def activate(self, callback):
+        self.callback = callback
+        self.activator(self)
+            
+    def deactivate(self):
+        self.deactivator(self)
+        self.callback = None
+    
+    def emit(self, *arguments, **keyword_arguments):
+        self.callback(*arguments, **keyword_arguments)
